@@ -12,8 +12,8 @@ services:
       DB_MYSQL_PASSWORD: "nginxrw"
       DB_MYSQL_NAME: "nginx"
     volumes:
-      - ${HOME}/data/nginx:/data
-      - ${HOME}/data/nging/letsencrypt:/etc/letsencrypt
+      - /home/cevasrv/data/nginx:/data
+      - /home/cevasrv/data/nging/letsencrypt:/etc/letsencrypt
     ports:
       - "443:443"
       - "80:80"
