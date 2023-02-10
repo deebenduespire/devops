@@ -2,23 +2,23 @@ version: "3.6"
 #all port number should be exposed appending 9
 services:
 
-#  kanboard:
-#    image: kanboard/kanboard:latest
-#    container_name: kanboard
-#    restart: unless-stopped
-#    ports:
-#      - "9090:80"
-#      - "9443:443"
-#    depends_on:
-#      - kanboard-db
-#    volumes:
-#      - ./kanboard/data:/var/www/app/data
-#      - ./kanboard/plugins:/var/www/app/plugins
-#      - ./kanboard/ssl:/etc/nginx/ssl
-#    environment:
-#      DATABASE_URL: postgres://postgres:postgres@kanboard-db:5432/kanboard
-#    networks:
-#      - portainer
+  kanboard:
+    image: kanboard/kanboard:latest
+    container_name: kanboard
+    restart: unless-stopped
+    ports:
+      - "9090:80"
+      - "9443:443"
+    depends_on:
+      - kanboard-db
+    volumes:
+      - /home/cevasrv/data/kanboard/data:/var/www/app/data
+      - /home/cevasrv/data/kanboard/plugins:/var/www/app/plugins
+      - /home/cevasrv/data/kanboard/ssl:/etc/nginx/ssl
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@kanboard-db:5432/kanboard
+    networks:
+      - portainer
 
   kanboard-db:
     image: postgres
