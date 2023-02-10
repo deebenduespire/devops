@@ -27,7 +27,7 @@ services:
     image: mariadb
     restart: unless-stopped
     volumes:
-      - nginx:/var/lib/mysql
+      - $HOME/data/mysql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: MARIADB
       MYSQL_USER: nginx
