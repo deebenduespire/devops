@@ -12,8 +12,8 @@ services:
       DB_MYSQL_PASSWORD: "nginxrw"
       DB_MYSQL_NAME: "nginx"
     volumes:
-      - nginx/data:/data
-      - nginx/letsencrypt:/etc/letsencrypt
+      - nginx:/data
+      - nginx:/etc/letsencrypt
     ports:
       - "443:443"
       - "80:80"
@@ -27,7 +27,7 @@ services:
     image: mariadb
     restart: unless-stopped
     volumes:
-      - nginx/mysql:/var/lib/mysql
+      - nginx:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: MARIADB
       MYSQL_USER: nginx
