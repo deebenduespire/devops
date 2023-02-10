@@ -27,7 +27,7 @@ services:
     image: mariadb
     restart: unless-stopped
     volumes:
-      - ${HOME}/data/mysql:/var/lib/mysql
+      - /home/cevasrv/data/mysql:/var/lib/mysql #replace path with ${HOME}/data/mysql
     environment:
       MYSQL_ROOT_PASSWORD: MARIADB
       MYSQL_USER: nginx
