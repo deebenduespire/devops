@@ -13,7 +13,7 @@ services:
       DB_MYSQL_NAME: "nginx"
     volumes:
       - /home/cevasrv/data/nginx:/data
-      - /home/cevasrv/data/nging/letsencrypt:/etc/letsencrypt
+      - /home/cevasrv/data/nginx/letsencrypt:/etc/letsencrypt
     ports:
       - "443:443"
       - "80:80"
@@ -27,7 +27,7 @@ services:
     image: mariadb
     restart: unless-stopped
     volumes:
-      - /home/cevasrv/data/mysql:/var/lib/mysql #replace path with ${HOME}/data/mysql
+      - /home/cevasrv/data/nginx/mysql:/var/lib/mysql #replace path with ${HOME}/data/mysql
     environment:
       MYSQL_ROOT_PASSWORD: MariaDB
       MYSQL_USER: nginx
