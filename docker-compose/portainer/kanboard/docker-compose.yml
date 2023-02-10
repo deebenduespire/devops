@@ -2,26 +2,26 @@ version: "3.6"
 #all port number should be exposed appending 9
 services:
 
-  kanboard:
-    image: kanboard/kanboard:latest
-    container_name: kanboard
-    restart: unless-stopped
-    ports:
-      - "9090:80"
-      - "9443:443"
-    depends_on:
-      - kanboard-db
-    volumes:
-      - ./kanboard/data:/var/www/app/data
-      - ./kanboard/plugins:/var/www/app/plugins
-      - ./kanboard/ssl:/etc/nginx/ssl
-    environment:
-      DATABASE_URL: postgres://postgres:postgres@kanboard-db:5432/kanboard
-    networks:
-      - portainer
+#  kanboard:
+#    image: kanboard/kanboard:latest
+#    container_name: kanboard
+#    restart: unless-stopped
+#    ports:
+#      - "9090:80"
+#      - "9443:443"
+#    depends_on:
+#      - kanboard-db
+#    volumes:
+#      - ./kanboard/data:/var/www/app/data
+#      - ./kanboard/plugins:/var/www/app/plugins
+#      - ./kanboard/ssl:/etc/nginx/ssl
+#    environment:
+#      DATABASE_URL: postgres://postgres:postgres@kanboard-db:5432/kanboard
+#    networks:
+#      - portainer
 
   kanboard-db:
-    image: postgres:${postgres_version}
+    image: postgres
     container_name: kanboard-db
     restart: always
     ports:
@@ -31,10 +31,13 @@ services:
       POSTGRES_PASSWORD: CHANGEIT
       PGDATA: /var/lib/postgresql/data
     volumes:
-      - ./postgres:/var/lib/postgresql/data
-      - ./postgres.sql:/docker-entrypoint-initdb.d/initdb.sql
+      - kanboard:/var/lib/postgresql/data
+#      - ./postgres.sql:/docker-entrypoint-initdb.d/initdb.sql
     networks:
       - portainer
+
+volumes:
+  kanboard:
 
 networks:
   portainer:
