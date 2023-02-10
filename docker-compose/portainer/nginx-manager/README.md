@@ -33,3 +33,11 @@ Forward Secrecy with clients. `sudo openssl dhparam -out nginx.pem 2048`
 docker network create --driver=bridge --subnet=172.1.1.0/24 --ip-range=172.1.1.0/24 --gateway=172.1.1.1 proxy
 
 You can list what networks you have in your docker environment with this command: `docker network ls`
+
+#Create user in mysql
+`CREATE DATABASE nginx;`
+`CREATE USER 'nginx'@'%' IDENTIFIED BY 'nginxrw';`
+`GRANT ALL PRIVILEGES ON *.* TO 'nginx'@'%' WITH GRANT OPTION;`
+`CREATE USER 'root'@'%' IDENTIFIED BY 'MariaDB';`
+`GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;`
+`FLUSH PRIVILEGES;`

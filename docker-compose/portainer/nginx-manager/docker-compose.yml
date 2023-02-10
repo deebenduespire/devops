@@ -29,7 +29,7 @@ services:
     volumes:
       - /home/cevasrv/data/mysql:/var/lib/mysql #replace path with ${HOME}/data/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: MARIADB
+      MYSQL_ROOT_PASSWORD: MariaDB
       MYSQL_USER: nginx
       MYSQL_PASSWORD: nginxrw
       MYSQL_DATABASE: nginx
