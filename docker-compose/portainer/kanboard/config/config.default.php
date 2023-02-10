@@ -42,7 +42,7 @@ define('FILES_DIR', DATA_DIR . DIRECTORY_SEPARATOR . 'files');
 define('MAIL_CONFIGURATION', true);
 
 // E-mail address used for the "From" header (notifications)
-define('MAIL_FROM', 'replace-me@kanboard.local');
+define('MAIL_FROM', 'admin@espire.com');
 
 // E-mail address used for the "Bcc" header to send a copy of all notifications
 define('MAIL_BCC', '');
@@ -71,13 +71,10 @@ define('DB_DRIVER', 'sqlite');
 
 // Mysql/Postgres username
 define('DB_USERNAME', 'root');
-
 // Mysql/Postgres password
 define('DB_PASSWORD', '');
-
 // Mysql/Postgres hostname
 define('DB_HOSTNAME', 'localhost');
-
 // Mysql/Postgres database name
 define('DB_NAME', 'kanboard');
 
