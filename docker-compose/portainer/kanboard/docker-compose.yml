@@ -32,7 +32,7 @@ services:
       PGDATA: /var/lib/postgresql/data
     volumes:
       - /home/cevasrv/data/postgres:/var/lib/postgresql/data
-#      - ./postgres.sql:/docker-entrypoint-initdb.d/initdb.sql
+      - ./postgres.sql:/docker-entrypoint-initdb.d/initdb.sql
     networks:
       - portainer
 
