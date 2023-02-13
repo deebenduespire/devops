@@ -7,7 +7,6 @@ services:
     container_name: kanboard
     restart: unless-stopped
     ports:
-      - "6080:80"
       - "6443:443"
     depends_on:
       - kanboard-db
@@ -17,7 +16,10 @@ services:
       - /home/cevasrv/data/kanboard/ssl:/etc/nginx/ssl
       - /home/cevasrv/Workspace/kanboard/config/config.default.php:/var/www/app/config.default.php
       - /home/cevasrv/Workspace/kanboard/config/config.php:/var/www/app/config.php
+      - /home/cevasrv/Workspace/kanboard/ssl/kanboard.crt:/etc/nginx/ssl/kanboard.crt
+      - /home/cevasrv/Workspace/kanboard/ssl/kanboard.key:/etc/nginx/ssl/kanboard.key
     environment:
+      PLUGIN_INSTALLER: true
       DATABASE_URL: mysql://kanboard:KanBoardDB@kanboard-db/kanboard
       #DATABASE_URL: postgres://postgres:postgres@kanboard-db:5432/kanboard
     networks:
@@ -35,22 +37,6 @@ services:
       MYSQL_PASSWORD: KanBoardDB
     networks:
       - portainer
-
-#  kanboard-db:
-#    image: postgres
-#    container_name: kanboard-db
-#    restart: always
-#    ports:
-#      - "5432:5432"
-#    environment:
-#      POSTGRES_USER: kanboard
-#      POSTGRES_PASSWORD: CHANGEIT
-#      PGDATA: /var/lib/postgresql/data
-#    volumes:
-#      - /home/cevasrv/data/postgres:/var/lib/postgresql/data
-#      - /home/cevasrv/Workspace/kanboard/postgres.sql:/docker-entrypoint-initdb.d/initdb.sql
-#    networks:
-#      - portainer
 
 volumes:
   kanboard:
